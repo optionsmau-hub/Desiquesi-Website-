@@ -1,0 +1,115 @@
+{
+  "name": "Order",
+  "type": "object",
+  "properties": {
+    "customer_name": {
+      "type": "string",
+      "title": "Nombre completo"
+    },
+    "phone": {
+      "type": "string",
+      "title": "Tel\u00e9fono"
+    },
+    "email": {
+      "type": "string",
+      "title": "Email"
+    },
+    "delivery_type": {
+      "type": "string",
+      "enum": [
+        "Recoger",
+        "Entrega a domicilio"
+      ],
+      "title": "Tipo de entrega"
+    },
+    "address": {
+      "type": "string",
+      "title": "Direcci\u00f3n"
+    },
+    "city": {
+      "type": "string",
+      "title": "Ciudad"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "Maryland",
+        "Virginia",
+        "Washington DC"
+      ],
+      "title": "Estado"
+    },
+    "zip": {
+      "type": "string",
+      "title": "C\u00f3digo postal"
+    },
+    "desired_datetime": {
+      "type": "string",
+      "title": "Fecha y hora deseada"
+    },
+    "notes": {
+      "type": "string",
+      "title": "Notas especiales"
+    },
+    "items": {
+      "type": "array",
+      "title": "Productos",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "qty": {
+            "type": "number"
+          },
+          "price": {
+            "type": "number"
+          },
+          "subtotal": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "total": {
+      "type": "number",
+      "title": "Total"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Pendiente",
+        "Confirmado",
+        "Entregado"
+      ],
+      "default": "Pendiente",
+      "title": "Estado"
+    }
+  },
+  "required": [
+    "customer_name",
+    "phone",
+    "delivery_type",
+    "total",
+    "status"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
